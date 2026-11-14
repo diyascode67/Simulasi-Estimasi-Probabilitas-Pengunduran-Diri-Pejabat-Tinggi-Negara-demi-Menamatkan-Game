@@ -1,78 +1,41 @@
-# Estimating the Probability of Resigning to Finish GTA VI
+# Estimasi Probabilitas Pengunduran Diri untuk Menamatkan GTA VI
+### Monte Carlo Simulation of a Hypothetical Resignation Decision
 
-A Monte Carlo simulation study exploring a hypothetical question: what is the probability that a vice president would resign from office to finish *Grand Theft Auto VI*?
+---
 
-This project models the trade-off between time availability while holding public office and the increased gaming time potentially available after resignation.
+## 🇮🇩 Bahasa Indonesia
 
-## Research Overview
+### Deskripsi Proyek
 
-The simulation uses historical playtime data from seven Rockstar Games titles to calibrate the estimated main-story completion time of GTA VI. It incorporates the planning fallacy through a correction factor based on Buehler, Griffin, and Ross (1994).
+Proyek ini merupakan simulasi Monte Carlo untuk mengestimasi probabilitas seorang wakil presiden hipotetis mengundurkan diri dari jabatannya demi menyelesaikan permainan *Grand Theft Auto VI (GTA VI)*.
 
-The model evaluates two conditions:
+Model ini membandingkan waktu yang tersedia untuk bermain jika tetap menjabat dengan waktu yang tersedia setelah mengundurkan diri. Simulasi menggunakan distribusi lognormal untuk memodelkan durasi permainan, koreksi *planning fallacy* berdasarkan penelitian Buehler dkk. (1994), serta analisis sensitivitas untuk mengevaluasi pengaruh berbagai parameter terhadap hasil akhir.
 
-1. Whether the perceived completion time while remaining in office exceeds the acceptable spoiler-tolerance period.
-2. Whether the completion time after resignation falls within that period.
+Penelitian ini bersifat hipotetis dan menggunakan sejumlah asumsi perilaku yang dinyatakan secara eksplisit.
 
-A resignation decision is considered feasible when both conditions are satisfied.
+### Metodologi
 
-## Methodology
+Simulasi menggunakan beberapa pendekatan statistik:
 
-- **Simulation method:** Monte Carlo
-- **Main simulation:** 2,000,000 iterations
-- **Sensitivity analysis:** 1,000,000 iterations per scenario
-- **Bootstrap:** 10,000 replications
-- **Random seed:** 20261119
-- **Distributions:** Lognormal and Beta
-- **Statistical analysis:** Spearman rank correlation and sensitivity analysis
+- **Monte Carlo Simulation:** Menghasilkan 2.000.000 iterasi untuk estimasi utama.
+- **Lognormal Distribution:** Memodelkan ketidakpastian durasi penyelesaian permainan.
+- **Planning Fallacy Correction:** Mengoreksi estimasi waktu berdasarkan rasio waktu aktual terhadap prediksi.
+- **Sensitivity Analysis:** Menguji perubahan hasil berdasarkan variasi parameter model.
+- **Bootstrap Analysis:** Mengevaluasi ketidakpastian rasio durasi permainan berdasarkan data historis.
 
-## Technologies
+### Teknologi yang Digunakan
 
 - Python
 - NumPy
 - SciPy
 - Matplotlib
 
-## Installation
+### Instalasi
 
-Install the required dependencies:
+Pastikan Python telah terpasang, kemudian instal dependensi:
 
 ```bash
 pip install numpy scipy matplotlib
 ```
 
-## Usage
-
-Run the simulation:
-
-```bash
-python simulation_gta_vi.py
-```
-
-For a quicker test run:
-
-```bash
-GTA_N_MAIN=100000 GTA_N_SENS=50000 python simulation_gta_vi.py
-```
-
-## Output
-
-The simulation generates an `output_gta_vi/` directory containing:
-
-- `fig1.png` – Historical Rockstar game duration comparison.
-- `fig2.png` – Distribution of estimated completion times.
-- `fig3.png` – One-at-a-time sensitivity analysis.
-- `res.json` – Numerical simulation results and model parameters.
-
-## Disclaimer
-
-This project is a hypothetical quantitative modeling exercise. All behavioral parameters are explicit modeling assumptions rather than empirical measurements of an actual political figure.
-
-The results should be interpreted as outputs of the specified model, not as predictions of real-world political behavior.
-
-## Reproducibility
-
-The random seed and simulation parameters are specified in the source code to support reproducibility.
-
-## License
-
-See the repository license for usage and redistribution terms.
+### Menjalankan Sim
